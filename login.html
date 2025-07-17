@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.7s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    body {
+      background: url('drop.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 800px;
+      max-width: 100%;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('waterdrop.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .login-btn {
+      background-color: #00d2ff;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .signup-btn {
+      background-color: white;
+      color: #00d2ff;
+      border: 2px solid #00d2ff;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      min-width: 300px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    .modal-content h3 {
+      margin-bottom: 20px;
+    }
+
+    .role-option {
+      margin: 10px 0;
+      padding: 12px 20px;
+      background: #e6f7ff;
+      border: 1px solid #00d2ff;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .role-option:hover {
+      background: #b3e6ff;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .image-section {
+        height: 200px;
+        width: 100%;
+      }
+
+      .form-section {
+        width: 100%;
+        padding: 30px 20px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .login-btn,
+      .signup-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body class="fade-in">
+  <div class="container">
+    <div class="image-section"></div>
+    <div class="form-section">
+      <h2>Login</h2>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="abc@gmail.com" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="********" />
+      </div>
+      <div class="buttons">
+        <button class="login-btn" onclick="showModal()">Login</button>
+        <button class="signup-btn" onclick="location.href='signup.html'">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role Selection Modal -->
+  <div class="modal" id="roleModal">
+    <div class="modal-content">
+      <h3>Select Login Type</h3>
+      <div class="role-option" onclick="loginAs('retailer')">Retailer</div>
+      <div class="role-option" onclick="loginAs('delivery')">Delivery Boy</div>
+      <div class="role-option" onclick="loginAs('customer')">Customer</div>
+    </div>
+  </div>
+
+  <script>
+    function showModal() {
+      document.getElementById("roleModal").style.display = "flex";
+    }
+
+    function loginAs(role) {
+      if (role === "retailer") {
+        window.location.href = "retailer-login.html";
+      } else if (role === "delivery") {
+        window.location.href = "delivery-login.html";
+      } else if (role === "customer") {
+        window.location.href = "customer-login.html";
+      }
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("roleModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

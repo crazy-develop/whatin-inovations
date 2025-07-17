@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Complaint - WHATIN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('complain.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: white;
+      width: 800px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: row;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      text-align: center;
+      color: #333;
+    }
+
+    .form-section label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-section select,
+    .form-section textarea,
+    .form-section input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .form-section button {
+      width: 100%;
+      padding: 10px;
+      background-color: #00d2ff;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-section button:hover {
+      background-color: #00a8cc;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #00d2ff;
+      font-size: 14px;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('complain3.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .image-section {
+        height: 200px;
+        width: 100%;
+      }
+
+      .form-section {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2>Submit Complaint</h2>
+      <form action="#" method="POST">
+        <label for="category">Select Problem:</label>
+        <select name="category" id="category" required onchange="toggleOther(this.value)">
+          <option value="" disabled selected>Select a problem</option>
+          <option value="login_issue">Login Issue</option>
+          <option value="bug_report">Bug in Website</option>
+          <option value="slow_performance">Website is Slow</option>
+          <option value="other">Other</option>
+        </select>
+
+        <div id="otherBox" style="display: none;">
+          <input type="text" name="other_problem" placeholder="Describe your problem">
+        </div>
+
+        <textarea name="description" rows="4" placeholder="Describe your issue in detail..." required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+        <a href="index.html" class="back-link">← Back to Home</a>
+      </form>
+    </div>
+    <div class="image-section"></div>
+  </div>
+
+  <script>
+    function toggleOther(value) {
+      const otherBox = document.getElementById('otherBox');
+      otherBox.style.display = value === 'other' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
